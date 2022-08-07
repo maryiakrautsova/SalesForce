@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import java.util.concurrent.TimeUnit;
+
 public class BaseTest {
     public WebDriver driver;
     public DriverManager driverManager;
@@ -20,7 +22,6 @@ public class BaseTest {
         driverManager.startMaximize();
         driver = driverManager.getDriver();
     }
-
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
