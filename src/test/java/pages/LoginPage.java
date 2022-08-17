@@ -22,12 +22,12 @@ public class LoginPage extends BasePage {
 
     public void loginToSalesforce() {
         LOGGER.debug(String.format("Attempt to open URL: %s", Urls.SALES_FORCE_LOGIN));
-        LOGGER.debug(String.format("Attempt to input username: %s", Credentials.USERNAME));
-        LOGGER.debug(String.format("Attempt to input password: %s", Credentials.PASSWORD));
-        LOGGER.debug(String.format("Attempt to click on login button %s", loginButton));
         driver.get(Urls.SALES_FORCE_LOGIN);
+        LOGGER.debug(String.format("Attempt to input username: %s", Credentials.USERNAME));
         driver.findElement(usernameInput).sendKeys(Credentials.USERNAME);
+        LOGGER.debug(String.format("Attempt to input password: %s", Credentials.PASSWORD));
         driver.findElement(passwordInput).sendKeys(Credentials.PASSWORD);
+        LOGGER.debug(String.format("Attempt to click on login button %s", loginButton));
         driver.findElement(loginButton).click();
     }
 }
