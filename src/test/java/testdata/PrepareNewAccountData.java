@@ -1,10 +1,15 @@
 package testdata;
 
 import models.NewAccountModel;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import utils.FakeMessageGenerator;
 
 public class PrepareNewAccountData {
+    private static final Logger LOGGER = LogManager.getLogger(PrepareNewAccountData.class.getName());
+
     public static NewAccountModel getValidData() {
+        LOGGER.debug(String.format("Attempt to get generated data for new account."));
         return NewAccountModel.
                 builder().
                 accountName(FakeMessageGenerator.generateAccountName()).

@@ -4,10 +4,14 @@ import elements.DropdownList;
 import elements.TextArea;
 import elements.TextInput;
 import models.NewAccountModel;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class NewAccountModelPage extends BasePage {
+
+    private static final Logger LOGGER = LogManager.getLogger(NewAccountModelPage.class.getName());
 
     private By ACCOUNT_NAME_INPUT = By.xpath("//div[contains(@class, 'modal-body')]//span[text()='Account Name']//parent::label//following-sibling::div//input");
     private By SAVE_BUTTON = By.xpath("//div[contains(@class, 'modal-body')]//button[@title='Save']");
@@ -17,6 +21,7 @@ public class NewAccountModelPage extends BasePage {
     }
 
     public NewAccountModelPage fillInAccountForm(NewAccountModel newAccount) {
+        LOGGER.debug(String.format("Attempt to create a new account: %s", newAccount));
         driver.findElement(ACCOUNT_NAME_INPUT).sendKeys(newAccount.getAccountName());
         new TextInput(driver, "Phone").inputText(newAccount.getPhone());
         new DropdownList(driver, "Type").selectOptionOnList(newAccount.getType());
@@ -40,10 +45,12 @@ public class NewAccountModelPage extends BasePage {
     }
 
     public String getGeneratedAccountName() {
+        LOGGER.debug(String.format("Attempt to get input account name: %s.", ACCOUNT_NAME_INPUT));
         return driver.findElement(ACCOUNT_NAME_INPUT).getText();
     }
 
     public void clickSaveNewAccount() {
+        LOGGER.debug(String.format("Attempt to click 'Save' button: %s.", SAVE_BUTTON));
         driver.findElement(SAVE_BUTTON).click();
     }
 }
