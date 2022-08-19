@@ -3,6 +3,7 @@ package pages;
 import elements.DropdownList;
 import elements.TextArea;
 import elements.TextInput;
+import io.qameta.allure.Step;
 import models.NewAccountModel;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -20,6 +21,8 @@ public class NewAccountModelPage extends BasePage {
         super(driver);
     }
 
+
+    @Step("Fill in new account form.")
     public NewAccountModelPage fillInAccountForm(NewAccountModel newAccount) {
         LOGGER.debug(String.format("Attempt to create a new account: %s", newAccount));
         driver.findElement(ACCOUNT_NAME_INPUT).sendKeys(newAccount.getAccountName());

@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -16,6 +17,7 @@ public class ExistingAccountsPage extends BasePage {
     }
 
 
+    @Step("Try to get account name.")
     public String getAccountName() {
         LOGGER.debug(String.format("Attempt to get existing account name: %s.", ACCOUNT_NAME_FIELD));
         return driver.findElement(ACCOUNT_NAME_FIELD).getText();

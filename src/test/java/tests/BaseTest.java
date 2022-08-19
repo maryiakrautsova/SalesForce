@@ -6,10 +6,13 @@ import drivermanager.DriverType;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import utils.TestListeners;
 
-import java.util.concurrent.TimeUnit;
 
+@Listeners(TestListeners.class)
 public class BaseTest {
+
     public WebDriver driver;
     public DriverManager driverManager;
 
